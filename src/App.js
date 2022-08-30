@@ -1,24 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Link, NavLink, Switch } from 'react-router-dom';
+import dogData from './dogData';
+import DogList from './DogList';
+import Nav from './Nav';
+import AllRoutes from './AllRoutes';
+App.defaultProps = dogData;
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+   <Nav names = {
+    App.defaultProps.dogs.map(dog => (dog.name)) }></Nav>
+   <AllRoutes dogs = {App.defaultProps.dogs}></AllRoutes>
+   </BrowserRouter>
+
   );
 }
 
